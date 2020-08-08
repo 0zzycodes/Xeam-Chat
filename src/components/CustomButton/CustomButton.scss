@@ -1,0 +1,79 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #00ffa9;
+$redColor: #ff0000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+.custom-button {
+  min-width: 15em;
+  width: auto;
+  // height: 40px;
+  letter-spacing: 0.5px;
+  // line-height: 40px;
+  padding: 0.5em 1em;
+  font-size: 1.5em;
+  background-image: linear-gradient(#230655, #3a065e);
+  color: white;
+  text-transform: capitalize;
+  font-family: "Open Sans Condensed";
+  font-weight: bolder;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+    height: 1em;
+  }
+  &:hover {
+    background-color: white;
+    color: #a3a3a3;
+    border: 1px solid;
+  }
+
+  &.google-sign-in {
+    min-width: 8em;
+    background-color: $secondaryColor;
+    border: 1px solid;
+    color: #a3a3a3;
+    // padding: 0.2em 1em;
+    justify-content: flex-start;
+
+    @include tablet() {
+      margin: 0;
+    }
+
+    &:hover {
+      background-color: #a3a3a3;
+      color: $secondaryColor;
+      border: none;
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border-color: white;
+    }
+  }
+}

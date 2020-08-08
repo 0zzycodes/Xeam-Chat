@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton|Lora|Montserrat:600&display=swap");
+$o-bgColor--ffffff: #ffffff;
+$o-fColor--474656: #474656;
+$o-fColor--898c96: #898c96;
+$o-fColor--ffffff: #ffffff;
+$o-fSize--18: 18px;
+$o-fSize--22: 22px;
+$o-fSize--30: 30px;
+$o-fFamily: "Segoe UI";
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #00ffa9;
+$redColor: #ff0000;
+$secondaryColor: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+span,
+li,
+img {
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5;
+}
+p {
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #adadad;
+}
+
+h1 {
+  font-size: 5.6em;
+  letter-spacing: 0.5em;
+}
+h2 {
+  font-size: 4.48em;
+  line-height: 1.1;
+}
+h3 {
+  font-size: 1.7em;
+}
+h4 {
+  font-size: 1.2em;
+  letter-spacing: 0.6px;
+}
+h5 {
+  font-size: 1.1em;
+}
+h6 {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+a,
+button {
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  text-decoration: none !important;
+  color: inherit;
+  transition: all 0.3s;
+}
+a {
+  font-size: 1.2em;
+}
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+// .App {
+//   width: 100vh;
+//   height: 100vh;
+//   border: 0.1em solid $primaryColor;
+//   position: relative;
+// }

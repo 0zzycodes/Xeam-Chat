@@ -1,0 +1,73 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #230655;
+$redColor: #ff0000;
+$blackColor: #141011;
+$secondaryColor: #ffffff;
+$sub-color: grey;
+$main-color: black;
+$shadow: 0px 0px 5px 0px $primaryColor;
+$sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+@mixin shrinkLabel {
+  top: -14px;
+  font-size: 12px;
+  color: $main-color;
+}
+.side-panel {
+  background-image: $sidePanelGradient;
+  color: $secondaryColor;
+  //   padding-top: 0.5em !important;
+  input {
+    background: none;
+    background-color: white;
+    color: $sub-color;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0.7em;
+    display: block;
+    width: 24em;
+    margin: auto;
+    border: none;
+    border-radius: 2em;
+    border-bottom: 1px solid $sub-color;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    }
+  }
+  .direct-message,
+  .group {
+    min-height: 15em;
+    margin: 2em 0;
+    .menu {
+      .listing-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+      }
+    }
+  }
+  .direct-message {
+  }
+  .group {
+  }
+}

@@ -1,0 +1,30 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #230655;
+$redColor: #ff0000;
+$blackColor: #141011;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(#000000a1, #00000000),
+    url("../../assets/landing.svg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+}

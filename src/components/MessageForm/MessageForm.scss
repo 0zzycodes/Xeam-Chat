@@ -1,0 +1,75 @@
+$tablet: 850px;
+$smartphone: 500px;
+$iphoneX: 375px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+$sub-color: grey;
+$main-color: black;
+$shadow: 0px 3px 5px rgba(124, 124, 124, 0.747);
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+@mixin iphoneX {
+  @media (max-width: #{$iphoneX}) {
+    @content;
+  }
+}
+@mixin shrinkLabel {
+  top: -14px;
+  font-size: 12px;
+  color: $main-color;
+}
+
+input {
+  background: none;
+  background-color: white;
+  color: $sub-color;
+  font-size: 14px;
+  // height: 20px;
+  line-height: 20px;
+  padding: 5px;
+  // padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $sub-color;
+  // margin: 15px 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus ~ .form-input-label {
+    @include shrinkLabel();
+  }
+}
+.message__form {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  box-shadow: $shadow;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+
+  button {
+    font-size: 14px;
+    padding: 15px 5px;
+    margin-bottom: -2px;
+    cursor: pointer;
+    height: 100%;
+    border: none;
+    // width: 100%;
+  }
+}

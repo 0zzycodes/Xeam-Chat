@@ -1,0 +1,124 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #230655;
+$redColor: #ff0000;
+$blackColor: #141011;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.sign-in {
+  // max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background-color: #ebdef3;
+  margin-top: 3em;
+  .home-icon {
+    margin-bottom: 20px;
+  }
+  .title,
+  .sub-titile {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: $blackColor;
+  }
+  .sub-titile {
+    font-size: 1.2em;
+    line-height: 2em;
+    display: block;
+  }
+  form {
+    width: 100% !important;
+    .form-input-group {
+      position: relative;
+      .icon-conatainer {
+        position: absolute;
+        bottom: 0;
+        left: 0.1em;
+        z-index: 9;
+        padding: 0.2em;
+        background-color: #230655;
+        width: 3.3em;
+        height: 3.3em;
+        display: flex;
+        border-bottom-left-radius: 2em;
+        border-top-left-radius: 2em;
+        .email-icon,
+        .padlock-icon {
+          margin: auto;
+          width: 2em;
+          height: 2em;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-left: 1em;
+      width: 1.1em;
+      height: 1.1em;
+    }
+    button {
+      margin-bottom: 10px;
+    }
+
+    @include tablet() {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .login-google {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    .login-with {
+      font-size: 1.4em;
+      // line-height: 14px;
+      margin-right: 1em;
+      color: #2c2c2c;
+    }
+  }
+
+  .no-account {
+    font-size: 1.3em;
+    text-align: center;
+    color: #2c2c2c;
+    a {
+      font-size: 1em;
+      color: $primaryColor;
+    }
+  }
+  .error {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: lighten($color: $primaryColor, $amount: 20);
+    color: $primaryColor;
+    padding: 3px 10px;
+    // border-radius: 10px;
+    font-weight: 600;
+    z-index: 99;
+  }
+}
