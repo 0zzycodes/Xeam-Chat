@@ -5,11 +5,12 @@ import { connect } from "react-redux";
 import SidePanel from "../../components/SidePanel/SidePanel";
 import Messages from "../../components/Messages/Messages";
 import MetaPanel from "../../components/MetaPanel/MetaPanel";
+import Spinner from "../../components/Spinner/Spinner";
 
 import "./Chat.scss";
 
 const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
-  return (
+  return currentUser && currentUser.id ? (
     <div className="chat-page">
       <div className="side-panel">
         <SidePanel key={currentUser && currentUser.id} {...{ currentUser }} />
@@ -23,6 +24,11 @@ const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
       <div className="meta-panel">
         <MetaPanel isPrivateChat={isPrivateChat} />
       </div>
+    </div>
+  ) : (
+    <div>
+      {" "}
+      <Spinner />{" "}
     </div>
   );
 };

@@ -4,17 +4,20 @@ export class MessagesHeader extends Component {
   render() {
     const {
       channelName,
-      // numUniqueUsers,
+      numUniqueUsers,
       handleSearchChange,
       searchLoading,
-      // isPrivateChannel,
+      isPrivateChannel,
     } = this.props;
-
     return (
       <section className="header">
         <div className="message">
-          <h3 className="channel_name">{channelName}</h3>
-          {/* <h5 className="channel_user_count">{numUniqueUsers}</h5> */}
+          {/* {isPrivateChannel && <img src={} alt=""/> } */}
+          <h3 className="channel_name">
+            {" "}
+            {!isPrivateChannel && "#"} {channelName}
+            {!isPrivateChannel && `(${numUniqueUsers})`}
+          </h3>
         </div>
         <div className="search">
           <input

@@ -50,11 +50,16 @@ provider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (
+  userAuth,
+  additionalData,
+  name
+) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const usersRef = firebase.database().ref("users");
   const snapShot = await userRef.get();
+  // const name = userAuth.displayName;
   const profile_picture = toonavatar.generate_avatar();
   if (!snapShot.exists) {
     const { displayName, email, uid } = userAuth;
@@ -74,7 +79,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
       await usersRef.child(uid).set({
-        name: displayName,
+        name,
         avatar: profile_picture,
       });
     } catch (error) {

@@ -1,6 +1,6 @@
 $tablet: 850px;
 $smartphone: 500px;
-$primaryColor: #00ffa9;
+$primaryColor: #230655;
 $redColor: #ff0000;
 $secondaryColor: #ffffff;
 $shadow: 0px 0px 5px 0px $primaryColor;
@@ -19,7 +19,7 @@ $shadow: 0px 0px 5px 0px $primaryColor;
 }
 
 .SpinnerOverlay {
-  height: 60vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;

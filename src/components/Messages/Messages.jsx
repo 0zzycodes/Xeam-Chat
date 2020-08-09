@@ -12,10 +12,11 @@ import Skeleton from "../Skeleton/Skeleton";
 import Message from "../Message/Message";
 import xeam from "../../assets/xeam.png";
 import "./Messages.scss";
+import Spinner from "../Spinner/Spinner";
 
 class Messages extends Component {
   state = {
-    privateChannel: this.props.isPrivateChannel,
+    privateChannel: this.props.isPrivateChat,
     privateMessagesRef: firebase.database().ref("privateMessages"),
     messagesRef: firebase.database().ref("messages"),
     messages: [],
@@ -220,8 +221,8 @@ class Messages extends Component {
       }
       return acc;
     }, []);
-    const plural = uniqueUsers.length > 1 || uniqueUsers.length === 0;
-    const numUniqueUsers = `${uniqueUsers.length} user${plural ? "s" : ""}`;
+    // const plural = uniqueUsers.length > 1 || uniqueUsers.length === 0;
+    const numUniqueUsers = uniqueUsers.length;
     this.setState({ numUniqueUsers });
   };
 
@@ -252,7 +253,7 @@ class Messages extends Component {
 
   displayChannelName = (channel) => {
     return channel
-      ? `${this.state.privateChannel ? "@" : "#"}${channel.name}`
+      ? `${this.state.privateChannel ? "" : ""}${channel.name}`
       : "";
   };
 
@@ -260,7 +261,11 @@ class Messages extends Component {
     users.length > 0 &&
     users.map((user) => (
       <div
-        style={{ display: "flex", alignItems: "center", marginBottom: "0.2em" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "0.2em",
+        }}
         key={user.id}
       >
         <span className="user__typing">{user.name} is typing</span> <Typing />
@@ -310,7 +315,8 @@ class Messages extends Component {
             </div>
           ) : (
             <div className={"messages__view"}>
-              {this.displayMessageSkeleton(messagesLoading)}
+              {/* {this.displayMessageSkeleton(messagesLoading)} */}
+              {messagesLoading && <Spinner />}
               {searchTerm
                 ? this.displayMessages(searchResults)
                 : this.displayMessages(messages)}

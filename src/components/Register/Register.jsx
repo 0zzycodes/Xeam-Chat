@@ -62,10 +62,10 @@ export default withRouter(
           email,
           password
         );
-        await createUserProfileDocument(user, { displayName });
+        await createUserProfileDocument(user, { displayName }, displayName);
         await auth.sendSignInLinkToEmail(email, actionCodeSettings);
-        this.setState({ isLoading: false, isSuccess: true });
         this.props.history.push("/messaging");
+        this.setState({ isLoading: false, isSuccess: true });
       } catch (error) {
         error.code === "auth/email-already-in-use"
           ? this.setState({
@@ -113,7 +113,7 @@ export default withRouter(
                 type="text"
                 name="displayName"
                 value={displayName}
-                label="Full name"
+                label="Username"
                 onChange={this.handleChange}
               />
             </div>
