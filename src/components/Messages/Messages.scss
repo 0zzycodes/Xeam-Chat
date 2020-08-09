@@ -33,7 +33,10 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
   position: relative;
   .message-container {
     height: calc(100vh - 12em);
-    overflow-y: scroll;
+    overflow-y: hidden;
+    &:hover {
+      overflow-y: scroll;
+    }
 
     .no-message {
       height: 100%;
@@ -72,6 +75,7 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
     background-color: $secondaryColor;
     width: 80%;
     margin: auto;
+    margin-top: 2em;
     display: flex;
     align-items: center;
 

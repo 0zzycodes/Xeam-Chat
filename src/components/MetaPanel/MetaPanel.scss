@@ -19,6 +19,16 @@ $shadow: 0px 0px 5px 0px $primaryColor;
   }
 }
 .meta-panel {
+  width: 200px !important;
+  .group-purpose {
+    padding: 2em 1em;
+    h3 {
+      font-size: 1.6em;
+    }
+    p {
+      font-size: 1em;
+    }
+  }
   //   padding-top: 0.5em !important;
   //   width: 15em;
 }

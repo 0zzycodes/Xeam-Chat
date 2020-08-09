@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import {
   setCurrentGroupChat,
   setPrivateChat,
@@ -8,6 +7,8 @@ import {
 
 import firebase from "../../../firebase/firebase.utils";
 import plus from "../../../assets/plus.svg";
+import check from "../../../assets/check.svg";
+import cancel from "../../../assets/cancel.svg";
 
 export class Channels extends Component {
   state = {
@@ -105,28 +106,18 @@ export class Channels extends Component {
 
   addChannel = () => {
     const { channelsRef, channelName, channelDetails } = this.state;
-    const { displayName, photoURL } = this.props.currentUser;
+    const { displayName, profile_pic } = this.props.currentUser;
     const { closeModal } = this;
 
     const key = channelsRef.push().key;
 
-    // const newChannel = {
-    //   id: key,
-    //   name: channelName,
-    //   details: channelDetails,
-    //   createdBy: {
-    //     name: displayName,
-    //     avatar: photoURL,
-    //   },
-    // };
     const newChannel = {
       id: key,
-      name: "Java",
-      details: "Java Programmers group",
+      name: channelName,
+      details: channelDetails,
       createdBy: {
-        name: "John",
-        avatar:
-          "http://gravatar.com/avatar/1f9d9a9efc2f523b2f09629444632b5c?d=identicon",
+        name: displayName,
+        avatar: profile_pic,
       },
     };
 
@@ -203,7 +194,13 @@ export class Channels extends Component {
   }
 
   render() {
-    const { channels, modal, activeGroup } = this.state;
+    const {
+      channels,
+      modal,
+      activeGroup,
+      channelName,
+      channelDetails,
+    } = this.state;
     const {
       closeModal,
       handleChange,
@@ -223,10 +220,12 @@ export class Channels extends Component {
             style={{ opacity: 0.7 }}
             className={`${channel.id === activeGroup && "active"} group-name`}
           >
-            {getNotificationCount(channel) && (
-              <span color="red">{getNotificationCount(channel)}</span>
-            )}
             <h4># {channel.name}</h4>
+            {getNotificationCount(channel) && (
+              <span className="notification">
+                {getNotificationCount(channel)}
+              </span>
+            )}
           </div>
         ));
       }
@@ -239,46 +238,36 @@ export class Channels extends Component {
         <div className="menu">
           <div className="listing-header">
             <h2> GROUPS</h2>
-            <img src={plus} alt="plus icon" onClick={this.addChannel} />
+            <img src={plus} alt="plus icon" onClick={openModal} />
           </div>
           {displayChannels(channels)}
         </div>
-
-        {/* <Modal
-                    basic
-                    open={modal}
-                    onClose={closeModal}
-                >
-                    <Modal.Header>Add a Channel</Modal.Header>
-                    <Modal.Content>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Field>
-                                <Input
-                                    fluid
-                                    label='Name of Channel'
-                                    name='channelName'
-                                    onChange={handleChange}
-                                />
-                            </Form.Field>
-                            <Form.Field>
-                                <Input
-                                    fluid
-                                    label='About the Channel'
-                                    name='channelDetails'
-                                    onChange={handleChange}
-                                />
-                            </Form.Field>
-                        </Form>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button color='green' inverted onClick={handleSubmit}>
-                            <Icon name='checkmark' /> Add
-                        </Button>
-                        <Button color='red' inverted onClick={closeModal}>
-                            <Icon name='remove' /> Cancel
-                        </Button>
-                    </Modal.Actions>
-                </Modal> */}
+        {modal && (
+          <div className="add-group">
+            <form onSubmit={handleSubmit}>
+              <input
+                placeholder="Group Name"
+                name="channelName"
+                value={channelName}
+                onChange={handleChange}
+              />
+              <input
+                placeholder="Group Description"
+                name="channelDetails"
+                value={channelDetails}
+                onChange={handleChange}
+              />
+              <div className="add-group-buttons">
+                <button className="cancel-add-group-btn" onClick={closeModal}>
+                  <img src={cancel} alt="cancel icon" />
+                </button>
+                <button className="add-add-btn" onClick={handleSubmit}>
+                  <img src={check} alt="check icon" />
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     );
   }

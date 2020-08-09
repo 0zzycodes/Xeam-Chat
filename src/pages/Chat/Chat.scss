@@ -46,28 +46,16 @@ $shadow: 0px 0px 5px 0px $primaryColor;
     margin: 0;
     padding: 0 0.5em;
   }
-  .color-panel {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
-  }
-
   .side-panel {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    -webkit-flex: 2 1 auto;
-    -ms-flex: 2 1 auto;
-    flex: 2 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+    // -webkit-order: 0;
+    // -ms-flex-order: 0;
+    // order: 0;
+    // -webkit-flex: 2 1 auto;
+    // -ms-flex: 2 1 auto;
+    // flex: 2 1 auto;
+    // -webkit-align-self: auto;
+    // -ms-flex-item-align: auto;
+    // align-self: auto;
   }
 
   .chat-messages {
@@ -76,20 +64,21 @@ $shadow: 0px 0px 5px 0px $primaryColor;
     order: 0;
     -webkit-flex: 6 1 auto;
     -ms-flex: 6 1 auto;
-    flex: 5 1 auto;
+    flex: 6 1 auto;
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
     background-image: linear-gradient(#f5f5f5, #d4d4d4);
+    padding: 0;
   }
 
   .meta-panel {
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
-    -webkit-flex: 2 1 auto;
-    -ms-flex: 2 1 auto;
-    flex: 2 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;

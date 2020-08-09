@@ -26,7 +26,7 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
   align-items: flex-start;
   margin: 6em 1em;
   position: relative;
-  //   width: 80%;
+  width: 80%;
 
   .sender__name {
     margin-right: 1em;
@@ -47,9 +47,14 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
 
   .message-content {
     min-height: 3em !important;
-    font-size: 1.2em;
+    font-size: 0.9em;
     margin-top: -1em;
-    font-weight: 700;
+    font-weight: 100 !important;
+    background-color: $secondaryColor;
+    padding: 1em;
+    border-radius: 1em;
+    display: inline-block;
+    max-width: 300px;
   }
   .avatar {
     width: 4em;
@@ -64,7 +69,9 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
   .message-content {
     min-height: 4em;
     padding-right: 1em;
-    border-right: 2px solid $primaryColor;
+    border-right: 2px solid #6c59ae;
+    background-color: #6c59ae;
+    color: white;
   }
 }
 .message__other__view {
@@ -81,5 +88,6 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
     min-height: 3em;
     padding-left: 1em;
     border-left: 2px solid $primaryColor;
+    color: black !important;
   }
 }

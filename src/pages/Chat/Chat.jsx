@@ -12,9 +12,6 @@ const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
   console.log(currentUser, currentGroupChat, isPrivateChat);
   return (
     <div className="chat-page">
-      <div className="color-panel">
-        <ColorPanel />
-      </div>
       <div className="side-panel">
         <SidePanel key={currentUser && currentUser.id} {...{ currentUser }} />
       </div>

@@ -28,10 +28,19 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
   color: $main-color;
 }
 .side-panel {
+  width: 300px !important;
   background-image: $sidePanelGradient;
   color: $secondaryColor;
-  //   padding-top: 0.5em !important;
+  padding: 0 !important;
+  .logo {
+    // margin: 2.5em 1em;
+    text-align: center;
+    img {
+      height: 8em;
+    }
+  }
   input {
+    // display: none !important;
     background: none;
     background-color: white;
     color: $sub-color;
@@ -39,10 +48,10 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
     line-height: 20px;
     padding: 0.7em;
     display: block;
-    width: 24em;
+    width: 90%;
     margin: auto;
     border: none;
-    border-radius: 2em;
+    // border-radius: 2em;
     border-bottom: 1px solid $sub-color;
 
     &:focus {
@@ -59,6 +68,7 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
     margin: 2em 0;
     .menu {
       .listing-header {
+        // width: 80%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -66,26 +76,73 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
         h2 {
           font-size: 1.5em;
         }
+        img {
+          cursor: pointer;
+        }
       }
     }
     .group-name {
-      padding: 0.6em 0 0.6em 2em;
+      padding: 0.6em 1em 0.6em 2em;
       // padding-left: 2em;
-
+      display: flex;
+      // flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
       cursor: pointer;
       h4 {
         font-size: 1.5em;
         color: $sub-color;
       }
+      .notification {
+        height: 2em;
+        width: 2em;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
     }
     .active {
+      background-color: #d4d4d4;
       h4 {
-        color: $secondaryColor !important;
+        color: $primaryColor !important;
       }
     }
   }
   .direct-message {
   }
   .group {
+    position: relative;
+    input {
+      margin: 1em auto;
+    }
+    .add-group {
+      position: absolute;
+      background-color: $primaryColor;
+      padding: 1em 0;
+      top: 3.5em;
+      left: 0;
+      right: 0;
+
+      .add-group-buttons {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      button {
+        border: 0;
+        height: 2em;
+        width: 2em;
+        border-radius: 0.5em;
+        cursor: pointer;
+        img {
+          height: 2em;
+          width: 2em;
+        }
+      }
+    }
   }
 }

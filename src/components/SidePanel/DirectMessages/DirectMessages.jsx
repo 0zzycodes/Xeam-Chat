@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { firestore } from "../../../firebase/firebase.utils";
 import firebase from "../../../firebase/firebase.utils";
 
 import {
@@ -13,6 +13,7 @@ class DirectMessages extends Component {
   state = {
     users: [],
     user: this.props.currentUser,
+    // usersRef: firestore.collection("users"),
     usersRef: firebase.database().ref("users"),
     connectedRef: firebase.database().ref(".info/connected"),
     presenceRef: firebase.database().ref("presence"),
