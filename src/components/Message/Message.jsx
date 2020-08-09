@@ -15,7 +15,7 @@ const displayCommentOrImage = (message, content) => {
     );
   }
 
-  return <p>{content}</p>;
+  return content;
 };
 
 const Message = ({ message, user }) => {

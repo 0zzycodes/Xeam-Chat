@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
-import md5 from "md5";
+// import md5 from "md5";
+import toonavatar from "cartoon-avatar";
 import "firebase/database";
 import "firebase/firestore";
 import "firebase/auth";
@@ -52,7 +53,9 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const usersRef = firebase.database().ref("users");
   const snapShot = await userRef.get();
+  const profile_picture = toonavatar.generate_avatar();
   if (!snapShot.exists) {
     const { displayName, email, uid } = userAuth;
     const joined = new Date();
@@ -67,8 +70,12 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         pending_requests: [],
         posts: [],
         events: [],
-        profile_pic: `http://gravatar.com/avatar/${md5(email)}?d=identicon`,
+        profile_pic: profile_picture,
         ...additionalData,
+      });
+      await usersRef.child(uid).set({
+        name: displayName,
+        avatar: profile_picture,
       });
     } catch (error) {
       console.log("Error creating user");

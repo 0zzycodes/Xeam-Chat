@@ -41,15 +41,27 @@ class App extends React.Component {
       <div className="App">
         <div className="wrapper">
           <Switch>
-            <Route exact path="/" component={LoginPage} />
+            <Route
+              exact
+              path="/"
+              // render={() =>
+              //   this.props.currentUser ? (
+              //     <LoginPage />
+              //   ) : (
+              //     <Redirect to="/messaging" />
+              //   )
+              // }
+              component={LoginPage}
+            />
 
             <Route exact path="/register" component={RegisterPage} />
             <Route
               exact
               path="/messaging"
-              render={() =>
-                this.props.currentUser ? <Chat /> : <Redirect to="/" />
-              }
+              component={Chat}
+              // render={() =>
+              //   this.props.currentUser ? <Chat /> : <Redirect to="/" />
+              // }
             />
           </Switch>
         </div>

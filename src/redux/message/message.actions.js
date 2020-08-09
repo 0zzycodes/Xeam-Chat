@@ -13,3 +13,20 @@ export const setPrivateChat = (isPrivateChat) => {
     payload: isPrivateChat,
   };
 };
+export const setUserPosts = (userPosts) => {
+  return {
+    type: MessageActionTypes.SET_USER_POSTS,
+    payload: userPosts,
+  };
+};
+
+/* Colors Actions */
+export const setColors = (primaryColor, secondaryColor) => {
+  return {
+    type: MessageActionTypes.SET_COLORS,
+    payload: {
+      primaryColor,
+      secondaryColor,
+    },
+  };
+};

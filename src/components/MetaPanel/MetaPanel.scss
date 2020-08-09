@@ -29,6 +29,21 @@ $shadow: 0px 0px 5px 0px $primaryColor;
       font-size: 1em;
     }
   }
+  .admin {
+    padding: 2em 1em;
+    h2 {
+      font-size: 1.6em;
+    }
+    .admin-name-image {
+      h3 {
+        font-size: 1.3em;
+      }
+      img {
+        height: 4em;
+        width: 4em;
+      }
+    }
+  }
   //   padding-top: 0.5em !important;
   //   width: 15em;
 }

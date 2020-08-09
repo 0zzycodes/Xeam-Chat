@@ -9,13 +9,33 @@ class MetaPanel extends Component {
           {" "}
           <h3>
             {this.props.currentGroupChat && this.props.currentGroupChat.name}
-            <p>
-              {" "}
-              {this.props.currentGroupChat &&
-                this.props.currentGroupChat.details}
-            </p>
           </h3>
+          <p>
+            {" "}
+            {this.props.currentGroupChat && this.props.currentGroupChat.details}
+          </p>
         </div>
+        {/* <h5 className="channel_user_count">{this.props.numUniqueUsers} Users</h5> */}
+        {this.props.isPrivateChat ? (
+          <div></div>
+        ) : (
+          <div className="admin">
+            <h2>Admin:</h2>
+            <div className="admin-name-image">
+              <h3>
+                {this.props.currentGroupChat &&
+                  this.props.currentGroupChat.createdBy.name}
+              </h3>
+              <img
+                src={
+                  this.props.currentGroupChat &&
+                  this.props.currentGroupChat.createdBy.avatar
+                }
+                alt="admin avatar"
+              />
+            </div>
+          </div>
+        )}
       </div>
     );
   }

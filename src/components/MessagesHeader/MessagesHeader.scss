@@ -27,4 +27,11 @@ $shadow: 0px 0px 5px 0px $primaryColor;
   justify-content: space-between;
   align-items: center;
   // border-radius: 2em;
+  .message {
+    .channel_name {
+      margin: 0.4em;
+    }
+    .channel_user_count {
+    }
+  }
 }

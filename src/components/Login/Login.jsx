@@ -7,7 +7,6 @@ import loader from "../../assets/loader.gif";
 import google from "../../assets/google.svg";
 import padlock from "../../assets/padlock.svg";
 import emailIcon from "../../assets/email.svg";
-import home from "../../assets/home.svg";
 import "./Login.scss";
 
 export default withRouter(
@@ -29,7 +28,7 @@ export default withRouter(
         this.setState({ isLoading: true });
         await auth.signInWithEmailAndPassword(email, password);
         this.setState({ email: "", password: "" });
-        this.props.history.push("/home");
+        this.props.history.push("/messaging");
       } catch (error) {
         error.code === "auth/wrong-password"
           ? this.setState({

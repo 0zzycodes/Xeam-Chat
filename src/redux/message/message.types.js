@@ -1,6 +1,8 @@
 const MessageActionTypes = {
   SET_CURRENT_GROUP_CHAT: "SET_CURRENT_GROUP_CHAT",
   SET_PRIVATE_CHAT: "SET_PRIVATE_CHAT",
+  SET_USER_POSTS: "SET_USER_POSTS",
+  SET_COLORS: "SET_COLORS",
 };
 
 export default MessageActionTypes;

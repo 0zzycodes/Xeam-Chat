@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
-import ColorPanel from "../../components/ColorPanel/ColorPanel";
+// import ColorPanel from "../../components/ColorPanel/ColorPanel";
 import SidePanel from "../../components/SidePanel/SidePanel";
 import Messages from "../../components/Messages/Messages";
 import MetaPanel from "../../components/MetaPanel/MetaPanel";
@@ -9,7 +9,6 @@ import MetaPanel from "../../components/MetaPanel/MetaPanel";
 import "./Chat.scss";
 
 const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
-  console.log(currentUser, currentGroupChat, isPrivateChat);
   return (
     <div className="chat-page">
       <div className="side-panel">
@@ -22,7 +21,7 @@ const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
         />
       </div>
       <div className="meta-panel">
-        <MetaPanel />
+        <MetaPanel isPrivateChat={isPrivateChat} />
       </div>
     </div>
   );

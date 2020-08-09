@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { firestore } from "../../../firebase/firebase.utils";
 import firebase from "../../../firebase/firebase.utils";
 
 import {
@@ -31,7 +30,7 @@ class DirectMessages extends Component {
     this.state.usersRef.on("child_added", (snap) => {
       if (currentUserId !== snap.key) {
         let user = snap.val();
-        user["uid"] = snap.key;
+        user["id"] = snap.key;
         user["status"] = "offline";
         loadedUsers.push(user);
         this.setState({ users: loadedUsers });
@@ -65,7 +64,7 @@ class DirectMessages extends Component {
 
   addStatusToUser = (userId, connected = true) => {
     const updatedUsers = this.state.users.reduce((acc, user) => {
-      if (user.uid === userId) {
+      if (user.id === userId) {
         user["status"] = `${connected ? "online" : "offline"}`;
       }
 
@@ -78,7 +77,7 @@ class DirectMessages extends Component {
   isUserOnline = (user) => user.status === "online";
 
   getChannelId = (userId) => {
-    const currentUserId = this.state.user.uid;
+    const currentUserId = this.state.user.id;
 
     return userId < currentUserId
       ? `${userId}/${currentUserId}`
@@ -86,7 +85,7 @@ class DirectMessages extends Component {
   };
 
   changeChannel = (user) => {
-    const channelId = this.getChannelId(user.uid);
+    const channelId = this.getChannelId(user.id);
     const channelData = {
       id: channelId,
       name: user.name,
@@ -109,17 +108,23 @@ class DirectMessages extends Component {
     const callUsers = () => {
       return users.map((user) => (
         <div
-          key={user.uid}
+          key={user.id}
           onClick={() => this.changeChannel(user)}
           style={{ opacity: 0.7, fontStyle: "italic" }}
-          className={`${user.uid === activeChannel && "active"} priv-chat`}
+          className={`${user.id === activeChannel && "active"} priv-chat`}
         >
-          {/* ONLINE TAG */}
-          {/* <Icon
-                    name='circle'
-                    color={isUserOnline(user) ? 'green' : 'red'}
-                /> */}
-          <h4> @ {user.name}</h4>
+          <div className="user">
+            <img src={user.avatar} alt="" />
+            <h4> {user.name}</h4>
+          </div>
+          <span
+            className="isOnline"
+            style={
+              isUserOnline(user)
+                ? { backgroundColor: "#0EE713" }
+                : { backgroundColor: "transparent" }
+            }
+          ></span>
         </div>
       ));
     };
