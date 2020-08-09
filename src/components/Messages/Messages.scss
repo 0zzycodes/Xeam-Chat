@@ -33,6 +33,7 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
   position: relative;
   .message-container {
     height: calc(100vh - 12em);
+    overflow-y: scroll;
 
     .no-message {
       height: 100%;

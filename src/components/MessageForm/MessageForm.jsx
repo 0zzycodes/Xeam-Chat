@@ -106,9 +106,9 @@ export class MessageForm extends Component {
     const message = {
       timestamp: firebase.database.ServerValue.TIMESTAMP,
       user: {
-        id: this.state.user.uid,
+        id: this.state.user.id,
         name: this.state.user.displayName,
-        avatar: this.state.user.photoURL,
+        avatar: this.state.user.profile_pic,
       },
     };
 
@@ -152,6 +152,8 @@ export class MessageForm extends Component {
       errors,
       message,
       loading,
+      channel,
+      user,
       modal,
       uploadState,
       percentUploaded,

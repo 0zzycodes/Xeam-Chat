@@ -8,25 +8,28 @@ import MetaPanel from "../../components/MetaPanel/MetaPanel";
 
 import "./Chat.scss";
 
-const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => (
-  <div className="chat-page">
-    <div className="color-panel">
-      <ColorPanel />
+const Chat = ({ currentUser, currentGroupChat, isPrivateChat }) => {
+  console.log(currentUser, currentGroupChat, isPrivateChat);
+  return (
+    <div className="chat-page">
+      <div className="color-panel">
+        <ColorPanel />
+      </div>
+      <div className="side-panel">
+        <SidePanel key={currentUser && currentUser.id} {...{ currentUser }} />
+      </div>
+      <div className="chat-messages">
+        <Messages
+          key={currentGroupChat && currentGroupChat.id}
+          {...{ currentGroupChat, currentUser, isPrivateChat }}
+        />
+      </div>
+      <div className="meta-panel">
+        <MetaPanel />
+      </div>
     </div>
-    <div className="side-panel">
-      <SidePanel key={currentUser && currentUser.id} {...{ currentUser }} />
-    </div>
-    <div className="chat-messages">
-      <Messages
-        key={currentGroupChat && currentGroupChat.id}
-        {...{ currentGroupChat, currentUser, isPrivateChat }}
-      />
-    </div>
-    <div className="meta-panel">
-      <MetaPanel />
-    </div>
-  </div>
-);
+  );
+};
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,

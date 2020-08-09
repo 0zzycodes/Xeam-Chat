@@ -1,0 +1,85 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #230655;
+$redColor: #ff0000;
+$blackColor: #141011;
+$secondaryColor: #ffffff;
+$sub-color: grey;
+$main-color: black;
+$shadow: 0px 0px 5px 0px $primaryColor;
+$sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+.message_view {
+  display: flex;
+  align-items: flex-start;
+  margin: 6em 1em;
+  position: relative;
+  //   width: 80%;
+
+  .sender__name {
+    margin-right: 1em;
+    font-size: 1.3em !important;
+    font-weight: 600;
+    position: absolute !important;
+    top: -3em;
+    right: 0;
+    text-align: right;
+  }
+  .timestamp {
+    font-size: 1em !important;
+    font-weight: 500;
+    position: absolute;
+    top: -2em;
+    right: 1em;
+  }
+
+  .message-content {
+    min-height: 3em !important;
+    font-size: 1.2em;
+    margin-top: -1em;
+    font-weight: 700;
+  }
+  .avatar {
+    width: 4em;
+    height: 4em;
+    margin: 0 1em;
+  }
+}
+
+.message__self__view {
+  flex-direction: row-reverse;
+  margin-left: auto;
+  .message-content {
+    min-height: 4em;
+    padding-right: 1em;
+    border-right: 2px solid $primaryColor;
+  }
+}
+.message__other__view {
+  .sender__name {
+    top: -3em;
+    left: 1em;
+    text-align: left;
+  }
+  .timestamp {
+    top: -2em;
+    left: 1em;
+  }
+  .message-content {
+    min-height: 3em;
+    padding-left: 1em;
+    border-left: 2px solid $primaryColor;
+  }
+}

@@ -63,6 +63,24 @@ $sidePanelGradient: linear-gradient(#2e2579, #6c59ae);
         justify-content: space-between;
         align-items: center;
         padding: 1em;
+        h2 {
+          font-size: 1.5em;
+        }
+      }
+    }
+    .group-name {
+      padding: 0.6em 0 0.6em 2em;
+      // padding-left: 2em;
+
+      cursor: pointer;
+      h4 {
+        font-size: 1.5em;
+        color: $sub-color;
+      }
+    }
+    .active {
+      h4 {
+        color: $secondaryColor !important;
       }
     }
   }

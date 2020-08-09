@@ -111,14 +111,14 @@ class DirectMessages extends Component {
           key={user.uid}
           onClick={() => this.changeChannel(user)}
           style={{ opacity: 0.7, fontStyle: "italic" }}
-          className={`${user.uid === activeChannel && "active"}`}
+          className={`${user.uid === activeChannel && "active"} priv-chat`}
         >
           {/* ONLINE TAG */}
           {/* <Icon
                     name='circle'
                     color={isUserOnline(user) ? 'green' : 'red'}
                 /> */}
-          @ {user.name}
+          <h4> @ {user.name}</h4>
         </div>
       ));
     };
@@ -127,7 +127,7 @@ class DirectMessages extends Component {
       <div className="direct-message">
         <div className="menu">
           <div className="listing-header">
-            <span>DIRECT MESSAGES ({users.length}) </span>
+            <h2>DIRECT MESSAGES ({users.length}) </h2>
             <img src={plus} alt="plus icon" />
           </div>
           {callUsers()}

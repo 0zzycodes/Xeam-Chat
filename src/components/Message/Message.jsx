@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import "./Message.scss";
 
 const isOwnMessage = (message, user) => {
   return message.user.id === user.uid ? "message__self" : "";
@@ -34,7 +35,9 @@ const Message = ({ message, user }) => {
         <span className="sender__name">{name}</span>
         <span className="timestamp">{timeFromNow(timestamp)}</span>
         <br />
-        {displayCommentOrImage(message, content)}
+        <p className="message-content">
+          {displayCommentOrImage(message, content)}
+        </p>
       </div>
     </div>
   );

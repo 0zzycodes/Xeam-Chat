@@ -17,7 +17,7 @@ export class Channels extends Component {
     channelDetails: "",
     channelsRef: firebase.database().ref("channels"),
     firstLoad: true,
-    activeChannel: "",
+    activeGroup: "",
     channel: null,
     messagesRef: firebase.database().ref("messages"),
     notifications: [],
@@ -79,7 +79,7 @@ export class Channels extends Component {
 
     if (firstLoad && channels.length > 0) {
       this.props.setCurrentGroupChat(firstChannel);
-      this.setActiveChannel(firstChannel);
+      this.setActiveGroup(firstChannel);
       this.setState({ channel: firstChannel });
     }
 
@@ -110,13 +110,23 @@ export class Channels extends Component {
 
     const key = channelsRef.push().key;
 
+    // const newChannel = {
+    //   id: key,
+    //   name: channelName,
+    //   details: channelDetails,
+    //   createdBy: {
+    //     name: displayName,
+    //     avatar: photoURL,
+    //   },
+    // };
     const newChannel = {
       id: key,
-      name: channelName,
-      details: channelDetails,
+      name: "Java",
+      details: "Java Programmers group",
       createdBy: {
-        name: displayName,
-        avatar: photoURL,
+        name: "John",
+        avatar:
+          "http://gravatar.com/avatar/1f9d9a9efc2f523b2f09629444632b5c?d=identicon",
       },
     };
 
@@ -133,13 +143,13 @@ export class Channels extends Component {
       });
   };
 
-  setActiveChannel = (channel) => {
-    this.setState({ activeChannel: channel.id });
+  setActiveGroup = (channel) => {
+    this.setState({ activeGroup: channel.id });
   };
 
   changeChannel = (channel) => {
     const { setCurrentGroupChat, setPrivateChat } = this.props;
-    this.setActiveChannel(channel);
+    this.setActiveGroup(channel);
     this.clearNotifications();
     setCurrentGroupChat(channel);
     setPrivateChat(false);
@@ -193,7 +203,7 @@ export class Channels extends Component {
   }
 
   render() {
-    const { channels, modal, activeChannel } = this.state;
+    const { channels, modal, activeGroup } = this.state;
     const {
       closeModal,
       handleChange,
@@ -211,12 +221,12 @@ export class Channels extends Component {
             onClick={() => changeChannel(channel)}
             name={channel.name}
             style={{ opacity: 0.7 }}
-            className={`${channel.id === activeChannel && "active"}`}
+            className={`${channel.id === activeGroup && "active"} group-name`}
           >
             {getNotificationCount(channel) && (
               <span color="red">{getNotificationCount(channel)}</span>
             )}
-            # {channel.name}
+            <h4># {channel.name}</h4>
           </div>
         ));
       }
@@ -228,8 +238,8 @@ export class Channels extends Component {
       <div className="group">
         <div className="menu">
           <div className="listing-header">
-            <span> GROUPS</span>
-            <img src={plus} alt="plus icon" />
+            <h2> GROUPS</h2>
+            <img src={plus} alt="plus icon" onClick={this.addChannel} />
           </div>
           {displayChannels(channels)}
         </div>
